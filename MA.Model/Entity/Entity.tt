@@ -1,0 +1,42 @@
+﻿<#@ include file="$(ProjectDir)Entity/DbHelper.ttinclude"#>
+using System;
+using System.Data;
+using System.Collections.Generic;
+
+namespace MA.Model
+{
+<#foreach(var table in DbHelper.GetDbTables(config.ConnectionString, config.DbDatabase)){#>
+<# string tableName = DbHelper.ToSplitFirstUpper(table.TableName); #>
+	public partial class <#=tableName#>
+    {
+<# foreach(DbColumn column in DbHelper.GetDbColumns(config.ConnectionString, config.DbDatabase, table.TableName)){#>
+		/// <summary>
+        /// <#= column.Comment#>
+        /// </summary>
+		public <#= column.CSharpType#> <#=DbHelper.ToSplitFirstUpper(column.Field)#> { get; set; }
+<#}#>		
+     }
+
+	public partial class <#=tableName#>Summary
+    {
+<# foreach(DbColumn column in DbHelper.GetDbColumns(config.ConnectionString, config.DbDatabase, table.TableName)){#>
+		/// <summary>
+        /// <#= column.Comment#>
+        /// </summary>
+        public static string <#=DbHelper.ToSplitFirstUpper(column.Field)#>Summary { get{return "<#= column.Comment#>";} }
+		/// <summary>
+        /// <#= column.Comment#>字符长度
+        /// </summary>
+        public static int <#=DbHelper.ToSplitFirstUpper(column.Field)#>CharLength { get{return <#= column.CharLength#>;} }
+<#}#>		
+     }
+<#}#>
+}
+
+<#+
+	class config
+    {
+        public static readonly string ConnectionString = "Server=127.0.0.1;Database=merchantalliance;Uid=root;Pwd=root;";
+        public static readonly string DbDatabase = "merchantalliance";
+    }
+#>

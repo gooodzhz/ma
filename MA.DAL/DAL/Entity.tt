@@ -1,0 +1,102 @@
+﻿<#@ include file="$(ProjectDir)DAL/DbHelper.ttinclude"#>
+using System;
+using MySql.Data.MySqlClient;
+using System.Data;
+using System.Collections.Generic;
+using MA.Model;
+namespace MA.DAL
+{
+		
+<#foreach(var table in DbHelper.GetDbTables(config.ConnectionString, config.DbDatabase)){#>
+<# string tableName = DbHelper.ToSplitFirstUpper(table.TableName); #>
+	public partial class <#=tableName#>DAL
+    {
+		public int Save(<#=tableName#> model)
+		{
+			<#=DbHelper.GetParameter(config.ConnectionString, config.DbDatabase, table.TableName, false)#>
+			string sql = "<#=DbHelper.GetInsertSql(config.ConnectionString, config.DbDatabase, table.TableName)#>";
+		return DBHelper.NoneQuery(sql, paras);
+		}
+		
+		public int Update(<#=tableName#> model)
+        {
+
+            <#=DbHelper.GetParameter(config.ConnectionString, config.DbDatabase, table.TableName, true)#>
+			string sql = "<#=DbHelper.GetUpdateSql(config.ConnectionString, config.DbDatabase, table.TableName)#>";
+            return DBHelper.NoneQuery(sql, paras);
+
+        }
+
+		public int Delete(int id)
+        {
+            string sql = string.Format("DELETE FROM <#=table.TableName#> WHERE id = {0}", id);
+            return DBHelper.NoneQuery(sql);
+
+        }
+
+		public <#=tableName#> GetById(int id)
+        {
+            string sql = string.Format("SELECT * FROM <#=table.TableName#> WHERE id = {0}", id);
+            DataTable table = DBHelper.GetDateTable(sql);
+			List<<#=tableName#>> list = new DatatableFill<<#=tableName#>>().FillModel(table);
+            if (list == null || list.Count == 0) return null;
+            return list[0];
+        }
+		
+		public bool Exist(string where)
+        {
+            int n = Count(where);
+            return n > 0 ? true : false;
+        }
+
+        public int Count(string where)
+        {
+            string sql = string.Format("SELECT COUNT(1) FROM <#=table.TableName#> WHERE {0}", where);
+            DataTable table = DBHelper.GetDateTable(sql);
+            return Convert.ToInt32(table.Rows[0][0]);
+        }
+
+        public int Count()
+        {
+            return Count(" 1 = 1 ");
+        }
+
+		public List<<#=tableName#>> GetList()
+        {
+            string sql = "SELECT * FROM <#=table.TableName#>";
+            DataTable table = DBHelper.GetDateTable(sql);
+			List<<#=tableName#>> list = new DatatableFill<<#=tableName#>>().FillModel(table);
+            return list;
+
+        }
+
+		public List<<#=tableName#>> GetList(string where)
+        {
+            string sql = string.Format("SELECT * FROM <#=table.TableName#> WHERE {0};", where);
+            DataTable table = DBHelper.GetDateTable(sql);
+            return new DatatableFill<<#=tableName#>>().FillModel(table);
+        }
+
+        public List<<#=tableName#>> GetList(string where, PagerInfo info)
+        {
+            info.Count = Count(where);
+            string sql = string.Format(" {0} LIMIT {1}, {2} ", where,  info.Index, info.Size);
+            return Find(sql);
+        }
+		
+        public int Truncate()
+        {
+            return DBHelper.NoneQuery("TRUNCATE TABLE <#=table.TableName#>");
+        }
+    }
+
+<#}#>
+}
+
+<#+
+	class config
+    {
+        public static readonly string ConnectionString = "Server=127.0.0.1;Database=merchantalliance;Uid=root;Pwd=root;";
+        public static readonly string DbDatabase = "merchantalliance";
+    }
+#>
