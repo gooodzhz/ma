@@ -696,10 +696,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MA.BLL\MA.BLL.csproj">
-      <Project>{cade4ebb-0b61-4620-8bc6-27f3981574d8}</Project>
-      <Name>MA.BLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MA.Common\MA.Common.csproj">
       <Project>{8d3cddbe-17eb-466e-b472-2a113d718e50}</Project>
       <Name>MA.Common</Name>
