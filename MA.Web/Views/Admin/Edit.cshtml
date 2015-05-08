@@ -9,23 +9,23 @@
                 <div class="ibox-content">
                     <div class="ibox-content">
                         <form id="addfrom" class="form-horizontal">
-                            <input type="hidden" name="id" value="">
+                            <input type="hidden" name="id" value="@(ViewBag.Info == null ? 0 : ViewBag.Info.Id)">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">@MA.Model.MaUserSummary.NameSummary:</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="name" class="form-control" placeholder="@MA.Model.MaUserSummary.NameSummary"> <span class="help-block m-b-none">长度不能超过:@MA.Model.MaUserSummary.NameCharLength</span>
+                                    <input type="text" name="name" class="form-control" value="@(ViewBag.Info == null ? 0 : ViewBag.Info.Name)" placeholder="@MA.Model.MaUserSummary.NameSummary"> <span class="help-block m-b-none">长度不能超过:@MA.Model.MaUserSummary.NameCharLength</span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">@MA.Model.MaUserSummary.PwdSummary：</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="pwd" class="form-control" placeholder="@MA.Model.MaUserSummary.PwdSummary"> <span class="help-block m-b-none">长度不能超过:@MA.Model.MaUserSummary.PwdCharLength</span>
+                                    <input type="text" name="pwd" class="form-control" value="@(ViewBag.Info == null ? 0 : ViewBag.Info.Pwd)" placeholder="@MA.Model.MaUserSummary.PwdSummary"> <span class="help-block m-b-none">长度不能超过:@MA.Model.MaUserSummary.PwdCharLength</span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">@MA.Model.MaUserSummary.NicknameSummary：</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="nickname" class="form-control" placeholder="@MA.Model.MaUserSummary.NicknameSummary"> <span class="help-block m-b-none">长度不能超过:@MA.Model.MaUserSummary.NicknameCharLength</span>
+                                    <input type="text" name="nickname" class="form-control" value="@(ViewBag.Info == null ? 0 : ViewBag.Info.Nickname)" placeholder="@MA.Model.MaUserSummary.NicknameSummary"> <span class="help-block m-b-none">长度不能超过:@MA.Model.MaUserSummary.NicknameCharLength</span>
                                 </div>
                             </div>
                             <div class="hr-line-dashed"></div>
