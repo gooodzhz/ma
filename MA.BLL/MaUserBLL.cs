@@ -15,5 +15,20 @@ namespace MA.BLL
         {
             return _maUserDal.GetList();
         }
+
+        public IList<MaUser> SearchByName(string name, PagerInfo info)
+        {
+            return _maUserDal.SearchByName(name, info);
+        }
+
+        public int Add(MaUser info)
+        {
+            return _maUserDal.Save(info);
+        }
+
+        public MaUser GetById(int id)
+        {
+            return _maUserDal.GetById(id);
+        }
     }
 }

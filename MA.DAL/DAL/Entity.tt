@@ -81,7 +81,7 @@ namespace MA.DAL
         {
             info.Count = Count(where);
             string sql = string.Format(" {0} LIMIT {1}, {2} ", where,  info.Index, info.Size);
-            return Find(sql);
+            return GetList(sql);
         }
 		
         public int Truncate()

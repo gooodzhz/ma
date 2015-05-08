@@ -655,8 +655,33 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\My97DatePicker\calendar.js" />
+    <Content Include="Scripts\My97DatePicker\lang\en.js" />
+    <Content Include="Scripts\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="Scripts\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="Scripts\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="Scripts\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="Scripts\My97DatePicker\skin\default\img.gif" />
+    <Content Include="Scripts\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="Scripts\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Scripts\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Scripts\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Scripts\My97DatePicker\WdatePicker.js" />
+    <Content Include="Scripts\My97DatePicker\开发包\lang\en.js" />
+    <Content Include="Scripts\My97DatePicker\开发包\lang\zh-cn.js" />
+    <Content Include="Scripts\My97DatePicker\开发包\lang\zh-tw.js" />
+    <Content Include="Scripts\My97DatePicker\开发包\readme.txt" />
+    <Content Include="Scripts\My97DatePicker\开发包\skin\datePicker.gif" />
+    <Content Include="Scripts\My97DatePicker\开发包\skin\default\datepicker.css" />
+    <Content Include="Scripts\My97DatePicker\开发包\skin\default\img.gif" />
+    <Content Include="Scripts\My97DatePicker\开发包\skin\WdatePicker.css" />
+    <Content Include="Scripts\My97DatePicker\开发包\skin\whyGreen\bg.jpg" />
+    <Content Include="Scripts\My97DatePicker\开发包\skin\whyGreen\datepicker.css" />
+    <Content Include="Scripts\My97DatePicker\开发包\skin\whyGreen\img.gif" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\zhz\pager.js" />
+    <Content Include="Scripts\zhz\zhz.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -684,6 +709,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -696,6 +722,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MA.BLL\MA.BLL.csproj">
+      <Project>{cade4ebb-0b61-4620-8bc6-27f3981574d8}</Project>
+      <Name>MA.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MA.Common\MA.Common.csproj">
       <Project>{8d3cddbe-17eb-466e-b472-2a113d718e50}</Project>
       <Name>MA.Common</Name>

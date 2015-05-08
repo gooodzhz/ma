@@ -52,6 +52,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>
+    <Compile Include="MaUserDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

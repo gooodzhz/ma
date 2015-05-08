@@ -44,6 +44,10 @@ namespace MA.Web
                 "~/Scripts/hplus/js/hplus.js",
                 "~/Scripts/hplus/js/plugins/pace/pace.min.js"));
 
+            bundles.Add(new ScriptBundle("~/Scripts/pager").Include(
+                "~/Scripts/zhz/pager.js",
+                "~/Scripts/zhz/zhz.js"
+                ));
         }
     }
 }

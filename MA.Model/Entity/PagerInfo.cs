@@ -10,7 +10,7 @@ namespace MA.Model
     {
         private int _index;
 
-        private int _size;
+        private int _size = 10;
 
         private int _count;
 
@@ -29,10 +29,23 @@ namespace MA.Model
         public int Index
         {
             get { return _index; }
-            set { _index = value; }
         }
 
-
+        public string PageIndex
+        {
+            set
+            {
+                int tempIndex = 0;
+                if (Int32.TryParse(value, out tempIndex))
+                {
+                    _index = (tempIndex - 1) * _size;
+                }
+                else
+                {
+                    _index = 0;
+                }
+            }
+        }
 
     }
 }

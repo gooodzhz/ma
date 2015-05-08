@@ -1,0 +1,61 @@
+﻿@Scripts.Render("~/Scripts/pager")
+<div class="modal inmodal fade" id="dialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="col-md-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>@ViewBag.DiaTitle</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="ibox-content">
+                        <form id="addfrom" class="form-horizontal">
+                            <input type="hidden" name="id" value="">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">@MA.Model.MaUserSummary.NameSummary:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="name" class="form-control" placeholder="@MA.Model.MaUserSummary.NameSummary"> <span class="help-block m-b-none">长度不能超过:@MA.Model.MaUserSummary.NameCharLength</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">@MA.Model.MaUserSummary.PwdSummary：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="pwd" class="form-control" placeholder="@MA.Model.MaUserSummary.PwdSummary"> <span class="help-block m-b-none">长度不能超过:@MA.Model.MaUserSummary.PwdCharLength</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">@MA.Model.MaUserSummary.NicknameSummary：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" name="nickname" class="form-control" placeholder="@MA.Model.MaUserSummary.NicknameSummary"> <span class="help-block m-b-none">长度不能超过:@MA.Model.MaUserSummary.NicknameCharLength</span>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <button class="btn btn-primary" type="button" onclick="postForm()">保存内容</button>
+                                    <button class="btn btn-white" data-dismiss="modal" type="button">取消</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function postForm() {
+        var param = GetParam("addfrom");
+        var url = "/Admin/Add";
+        $.post(url, param, function (result) {
+            var rs = result.split(":");
+            if (rs[0] == 0) {
+                alert(rs[1]);
+                return;
+            }
+            else {
+                alert(rs[1]);
+                window.location.reload();
+            }
+        });
+    }
+</script>
