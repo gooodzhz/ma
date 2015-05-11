@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace MA.Model
 {
+
 	public partial class MaUser
     {
 		/// <summary>

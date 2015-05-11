@@ -18,7 +18,7 @@ namespace MA.DAL
 			};
 
 			string sql = "INSERT INTO ma_user(name, pwd, nickname, date) VALUES(?name, ?pwd, ?nickname, ?date)";
-		    return DBHelper.NoneQuery(sql, paras);
+		return DBHelper.NoneQuery(sql, paras);
 		}
 		
 		public int Update(MaUser model)

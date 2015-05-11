@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace MA.Model
 {
+
 <#foreach(var table in DbHelper.GetDbTables(config.ConnectionString, config.DbDatabase)){#>
 <# string tableName = DbHelper.ToSplitFirstUpper(table.TableName); #>
 	public partial class <#=tableName#>
